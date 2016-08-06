@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="cn.itcast.oa.domain">
+
+	<class name="Information" table="itcast_information">
+		<id name="id">
+            <generator class="native"/>
+		</id>
+		<property name="cate" length="50"/>
+		<property name="title" length="100"/>
+		<property name="content" type="text" length="65535"/>
+		<property name="pic" length="50"/>
+		<property name="author" length="50"/>
+		<property name="postDate" type="timestamp"/>
+		<property name="postIp" length="50"/>
+		<property name="isShow" type="byte"/>
+		<property name="ctime" type="timestamp"/>
+		
+		<!-- channels属性,本类与Channel多对多关系-->
+		<set name="channels" table="itcast_channel_information">
+			<key column="informationId"></key>
+			<many-to-many class="Channel" column="channelId"/>
+		</set>
+		
+	</class>
+	
+</hibernate-mapping>
