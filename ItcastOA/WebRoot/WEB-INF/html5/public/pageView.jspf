@@ -1,0 +1,53 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<!--分页信息,部署要求:
+1.amazeui.min.css
+2.jquery.min.js,amazeui.min.js
+3.引用页面中需要有一个form对象附加<input>对象以传递pageNum对象
+-->
+<div class="am-g">
+	<div class="am-u-md-12 am-u-lg-4">
+		<p class="am-kai">
+		页次：${currentPage}/${pageCount}页 &nbsp;
+		每页：${pageSize}条 &nbsp;
+		共：${recordCount}条
+		</p>
+	</div>
+	<div class="am-u-md-12 am-u-lg-8">
+		<ul class="am-pagination am-pagination-right">
+	      
+	      <s:if test="currentPage == 1"><%-- 当前页,相应页码无需跳转链接 --%>
+			<li class="am-disabled"><a href="javascript: void(0)" title="首页">&laquo; 首页</a></li>
+		  </s:if>
+		  <s:else>
+	      	<li><a href="javascript: gotoPage(1)" title="首页">&laquo; 首页</a></li>
+	      </s:else>
+	      
+	      <s:iterator begin="%{beginPageIndex}" end="%{endPageIndex}" var="num">
+			<%-- test里面变量默认是ognl表达式,所以可以不用%包围，s:iterator中的var是将遍历对象集合以变量var放入stackcontext的map中,加#取值 --%>
+			<s:if test="currentPage == #num"><%-- 当前页,相应页码无需跳转链接 --%>
+				<li class="am-active"><a href="#">${num}</a></li>
+			</s:if>
+			<s:else><%-- 非当前页 --%>
+				<li><a href="javascript: gotoPage(${num});">${num}</a></li>
+			</s:else>
+		  </s:iterator>
+	      
+	      <s:if test="currentPage == pageCount"><%-- 当前页,相应页码无需跳转链接 --%>
+			<li class="am-disabled"><a href="javascript: void(0)" title="首页">尾页 &raquo;</a></li>
+		  </s:if>
+		  <s:else>
+		      <li><a href="javascript: gotoPage(${pageCount})" title="尾页">尾页 &raquo;</a>
+		      </li>
+		  </s:else> 
+	    </ul>
+	</div>
+</div>
+<script>
+	function gotoPage(pageNum){
+		//window.location.href = "forumAction_show.action?id=${id}&pageNum=" + pageNum;
+		//在嵌入此页面的父页面中的第一个form表单中附加hidden域,用来传递pageNum
+		$(document.forms[0]).append("<input type='hidden' name='pageNum' value='"+ pageNum +"'/>");
+		document.forms[0].submit();//提交表单，传递过滤条件所需的参数
+	}
+</script>

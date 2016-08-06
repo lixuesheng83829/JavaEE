@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- 配置为开发模式 -->
+    <constant name="struts.devMode" value="true" />
+	<!-- 配置扩展名为action -->
+    <constant name="struts.action.extension" value="action" />
+    <!-- 配置主题 -->
+    <constant name="struts.ui.theme" value="simple" />
+	<!-- 改变struts2上传文件的大小 -->
+	<constant name="struts.multipart.maxSize" value="20097152"></constant>
+	
+	<!-- json-default拦截器栈继承了默认的struts-default栈 -->
+	<package name="default" namespace="/" extends="json-default">
+		<interceptors>
+			<!-- 声明一个拦截器 -->
+			<interceptor name="checkPrivilege" class="cn.itcast.oa.interceptor.CheckPrivilegeInterceptor"></interceptor>
+			
+			<!-- 重新定义defaultStack拦截器栈,需要先判断权限 -->
+			<interceptor-stack name="defaultStack">
+				<interceptor-ref name="checkPrivilege"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		
+		<!-- 配置全局Result -->
+		<global-results>
+			<result name="loginUI">/WEB-INF/html5/userAction/loginUI.jsp</result>
+			<result name="noPrivilegeError">/noPrivilegeError.jsp</result>
+		</global-results>
+		
+		<!-- 测试用的action，当与Spring整合后，class属性写的就是Spring中bean的名称 -->
+		<!-- 整合前，class="cn.itcast.oa.test.TestAction" -->
+		<action name="test" class="testAction">
+			<result name="SUCCESS">/test.jsp</result>
+		</action>
+		
+		<!-- 岗位管理 -->
+		<action name="roleAction_*" class="roleAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/roleAction/list.jsp</result>
+			<result name="saveUI">/WEB-INF/jsp/roleAction/saveUI.jsp</result>
+			<!-- <result name="toList" type="redirectAction">roleAction_list</result> -->
+			<result name="toList"  type="redirectAction">roleAction_list.action?parentId=${parentId}</result>
+			<result name="setPrivilegeUI">/WEB-INF/jsp/roleAction/setPrivilegeUI.jsp</result>
+		</action>
+		
+		<!-- 部门管理 -->
+		<action name="departmentAction_*" class="departmentAction" method="{1}">
+			<result name="list">/WEB-INF/html5/departmentAction/list.jsp</result>
+			<result name="saveUI">/WEB-INF/html5/departmentAction/saveUI.jsp</result>
+			<result name="toList"  type="redirectAction">departmentAction_list.action?parentId=${parentId}</result>
+		</action>
+		
+		<!-- 用户管理 -->
+		<action name="userAction_*" class="userAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/userAction/list.jsp</result>
+			<result name="saveUI">/WEB-INF/jsp/userAction/saveUI.jsp</result>
+			<result name="toList"  type="redirectAction">userAction_list.action?parentId=${parentId}</result>
+			<result name="logout">/WEB-INF/jsp/userAction/logout.jsp</result>
+			<result name="toIndex"  type="redirect">/index.jsp</result>
+			<!-- ajax异步传递,接收action返回结果封装成json.
+				如果结果是集合,需要以正则表达式\[\d+\]\进行遍历
+				如果是对象,可以直接写对象的属性名 -->
+			<!--<result name="listUser"  type="json">
+				<param name="includeProperties">\[\d+\]\.loginName,\[\d+\]\.gender</param>
+			</result>-->
+			<result name="checkUser" type="json">
+				<param name="root">message</param>
+			</result>
+		</action>
+    	
+	    <!-- 首页 -->
+	    <action name="homeAction_*" class="homeAction" method="{1}">
+	    	<result name="{1}">/WEB-INF/html5/homeAction/{1}.jsp</result>
+	    </action>
+	    
+	    <!-- 论坛：版块管理 -->
+		<action name="forumManageAction_*" class="forumManageAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/forumManageAction/list.jsp</result>
+			<result name="saveUI">/WEB-INF/jsp/forumManageAction/saveUI.jsp</result>
+			<result name="toList"  type="redirectAction">forumManageAction_list.action</result>
+		</action>
+	    
+	    <!-- 论坛：版块相关功能 -->
+		<action name="forumAction_*" class="forumAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/forumAction/list.jsp</result>
+			<result name="show">/WEB-INF/jsp/forumAction/show.jsp</result>
+		</action>
+
+	    <!-- 论坛：主题相关功能 -->
+		<action name="topicAction_*" class="topicAction" method="{1}">
+			<result name="show">/WEB-INF/jsp/topicAction/show.jsp</result>
+			<result name="addUI">/WEB-INF/jsp/topicAction/addUI.jsp</result>
+			<!-- 以下参数形式应参考forum下的show.jsp中topic列表title的跳转形式，
+			之所以取值${id}，在struts.xml中是ognl表达形式，其取值为值栈的最上方，
+			由于在topicAction中add方法拥有model封装属性,其${id}取值即为topic的id
+			 -->
+			<result name="toShow" type="redirectAction">topicAction_show.action?id=${id}</result>
+		</action>
+
+	    <!-- 论坛：回复相关功能 -->
+		<action name="replyAction_*" class="replyAction" method="{1}">
+			<result name="addUI">/WEB-INF/jsp/replyAction/addUI.jsp</result>
+			<!-- 此处跳转路径与上述相同，参数取值来源于ReplyAction中s:hidden传递的topicId -->
+			<result name="toTopicShow" type="redirectAction">topicAction_show.action?id=${topicId}</result>
+		</action>
+    
+    	<!-- 栏目管理 -->
+		<action name="channelAction_*" class="channelAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/channelAction/list.jsp</result>
+			<result name="saveUI">/WEB-INF/jsp/channelAction/saveUI.jsp</result>
+			<result name="toList"  type="redirectAction">channelAction_list.action?parentId=${parentId}</result>
+		</action>
+		
+		<!-- 信息管理 -->
+		<action name="informationAction_*" class="informationAction" method="{1}">
+			<result name="list">/WEB-INF/html5/informationAction/list.jsp</result>
+			<result name="saveUI">/WEB-INF/html5/informationAction/saveUI.jsp</result>
+			<result name="show">/WEB-INF/html5/informationAction/show.jsp</result>
+			<result name="toList"  type="redirectAction">informationAction_list.action?pageNum=${pageNum}</result>
+			<result name="showInfo">/WEB-INF/html5/informationAction/showInfo.jsp</result>
+		</action>
+		
+		<!-- ckeditor图片上传信息管理 -->
+		<action name="imgUploadAction" class="imgUploadAction" method="imgUpload">
+		</action>
+		
+		<!-- 附件上传下载管理 -->
+		<action name="attachmentAction_*" class="attachmentAction" method="{1}">
+			<param name="savePath">/WEB-INF/upload</param>
+			<result name="list">/WEB-INF/jsp/attachmentAction/show.jsp</result>
+			<result name="saveUI">/WEB-INF/jsp/attachmentAction/saveUI.jsp</result>
+			<result name="close">/WEB-INF/jsp/attachmentAction/close.jsp</result>
+			<result name="toList" type="redirectAction">attachmentAction_list?parentId=${parentId}</result>
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">52428800</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+            <result name="download" type="stream">
+            	<!--<param name="contentType">image/jpeg</param>-->
+            	<!-- inputstream与action中流属性名称一致,本项目中为Attachement的javabean中定义 -->
+            	<param name="inputStream">inputStream</param>
+            	<!-- 此处文件名filename取值为action中放置的属性 -->
+            	<param name="contentDisposition">attachment;filename="${#request.fileName}"</param>
+            	<param name="bufferSize">1024</param>
+            </result>
+		</action>
+		
+		<!-- 验证码映射 -->
+		<action name ="securityCodeImageAction_*" class="securityCodeImageAction" method="{1}">
+			<result name="securityCode" type="stream">
+				<param name="contentType">image/jpeg</param>
+				<param name="inputName">imageStream</param>
+				<param name="bufferSize">2048</param>
+			</result>
+			<result name="checkNumber" type="json">
+			</result>
+		</action>
+		
+		<!-- 数据字典 -->
+		<action name ="elecSystemDDLAction_*" class="elecSystemDDLAction" method="{1}">
+			<result name="list">/WEB-INF/html5/elecSystemDDLAction/list.jsp</result>
+			<result name="editUI">/WEB-INF/html5/elecSystemDDLAction/dictionaryEdit.jsp</result>
+		</action>
+    </package>
+
+</struts>

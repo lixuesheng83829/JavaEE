@@ -1,0 +1,55 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+	<!--分页信息-->
+<div id=PageSelectorBar>
+	<div id=PageSelectorMemo>
+		页次：${currentPage}/${pageCount}页 &nbsp;
+		每页显示：${pageSize}条 &nbsp;
+		总记录数：${recordCount}条
+	</div>
+	<div id=PageSelectorSelectorArea>
+		<!--
+		<IMG SRC="${pageContext.request.contextPath}/style/blue/images/pageSelector/firstPage2.png"/>
+		-->
+		<a href="javascript: gotoPage(1)" title="首页" style="cursor: hand;">
+			<img src="${pageContext.request.contextPath}/style/blue/images/pageSelector/firstPage.png"/>
+		</a>
+		
+		<s:iterator begin="%{beginPageIndex}" end="%{endPageIndex}" var="num">
+			<%-- test里面变量默认是ognl表达式，所以可以不用%包围，此外s:iterator中的var是将变量放入stackcontext的map中，因此取值加# --%>
+			<s:if test="currentPage == #num"><%-- 当前页 --%>
+				<span>${num}</span>
+			</s:if>
+			<s:else><%-- 非当前页 --%>
+				<span onClick="gotoPage(${num});">${num}</span>
+			</s:else>
+		</s:iterator>
+		
+		<!--
+		<IMG SRC="${pageContext.request.contextPath}/style/blue/images/pageSelector/lastPage2.png"/>
+		-->
+		<a href="javascript: gotoPage(${pageCount})" title="尾页" style="cursor: hand;">
+			<img src="${pageContext.request.contextPath}/style/blue/images/pageSelector/lastPage.png"/>
+		</a>
+		
+		转到：
+		<SELECT id="pn" onchange="gotoPage(this.value)">
+			<s:iterator begin="1" end="%{pageCount}" var="num">
+				<option value="${num}">${num}</option>
+			</s:iterator>
+		</SELECT>
+		
+		<SCRIPT type="text/javascript">
+			$("#pn").val(${currentPage});
+		</SCRIPT>
+	</div>
+</div>
+
+<script type="text/javascript">
+	function gotoPage(pageNum){
+		//window.location.href = "forumAction_show.action?id=${id}&pageNum=" + pageNum;
+		//在嵌入此页面的父页面中的第一个form表单中附加hidden域,用来传递pageNum
+		$(document.forms[0]).append("<input type='hidden' name='pageNum' value='"+ pageNum +"'/>");
+		document.forms[0].submit();//提交表单，传递过滤条件所需的参数
+	}
+</script>
