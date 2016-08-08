@@ -1,0 +1,378 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>浙江省安全生产监控中心服务平台</title>
+  <meta name="description" content="这是一个 table 页面">
+  <meta name="keywords" content="table">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <link rel="icon" type="image/png" href="../assets/i/favicon.png">
+  <link rel="apple-touch-icon-precomposed" href="../assets/i/app-icon72x72@2x.png">
+  <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+  <link rel="stylesheet" href="../assets/css/amazeui.min.css"/>
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+  以获得更好的体验！</p>
+<![endif]-->
+
+<header class="am-topbar admin-header">
+  <div class="am-topbar-brand">
+    <strong>安全生产监控中心服务平台</strong> <small>Safety Monitoring Center Service Platform</small>
+  </div>
+
+  <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+
+  <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+
+    <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
+      <li><a href="javascript:;"><span class="am-icon-envelope-o"></span> 收件箱 <span class="am-badge am-badge-warning">5</span></a></li>
+      <li class="am-dropdown" data-am-dropdown>
+        <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+          <span class="am-icon-users"></span> 管理员 <span class="am-icon-caret-down"></span>
+        </a>
+        <ul class="am-dropdown-content">
+          <li><a href="#"><span class="am-icon-user"></span> 资料</a></li>
+          <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
+          <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
+        </ul>
+      </li>
+      <li class="am-hide-sm-only"><a href="javascript:;" id="admin-fullscreen"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="am-cf admin-main">
+  <!-- sidebar start -->
+  <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
+    <div class="am-offcanvas-bar admin-offcanvas-bar">
+      <ul class="am-list admin-sidebar-list">
+        
+		<li class="admin-parent">
+          <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}">
+			  <span class="am-icon-skyatlas"></span> 安全数据监测 
+			  <span class="am-icon-angle-right am-fr am-margin-right"></span>
+		  </a>
+          <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">
+            <li><a href="whp-monitor.html" class="am-cf"><span class="am-icon-industry"></span> 化工监测<span class="am-badge am-badge-secondary am-margin-right am-fr">36</span><span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+            <li><a href="#"><span class="am-icon-puzzle-piece"></span> 矿山监测<span class="am-badge am-badge-secondary am-margin-right am-fr">8</span></a></li>
+            <li><a href="#"><span class="am-icon-th"></span> 粉尘监测<span class="am-badge am-badge-secondary am-margin-right am-fr">24</span></a></li>
+            <li><a href="http://efmudc.homewell.com.cn/UDCWeb/login.action" target="_blank"><span class="am-icon-plug"></span> 智慧用电</a></li>
+          </ul>
+        </li>
+        <li>
+			<a class="am-cf" data-am-collapse="{target: '#collapse-nav3'}">
+				<span class="am-icon-table"></span> 数值分析模拟
+				<span class="am-icon-angle-right am-fr am-margin-right"></span>
+			</a>
+			<ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav3">
+            <li><a href="model-analyse.html" class="am-cf"><span class="am-icon-sitemap"></span> 指标模型</a></li>
+            <li><a href="#"><span class="am-icon-ambulance"></span> 事故后果模型</a></li>
+          </ul>
+		</li>
+        
+		<li class="admin-parent">
+			<a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}">
+			  <span class="am-icon-area-chart"></span> 风险分析应用 
+			  <span class="am-icon-angle-right am-fr am-margin-right"></span>
+			</a>
+			
+			<ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav2">
+				<li><a href="overview-analyse.html" class="am-cf">
+					<span class="am-icon-dashboard"></span> 安全监控大数据</a>
+				</li>
+				<li><a href="#">
+					<span class="am-icon-fire"></span> 重大危险源</a>
+				</li>
+				<li><a href="industry-analyse.html">
+					<span class="am-icon-bar-chart"></span> 行业分析</a>
+				</li>
+				
+			</ul>
+		</li>
+		<li><a href="#"><span class="am-icon-hotel"></span> 事故统计分析</a></li>
+        <li><a href="#"><span class="am-icon-sign-out"></span> 注销</a></li>
+      </ul>
+
+      <div class="am-panel am-panel-default admin-sidebar-panel">
+        <div class="am-panel-bd">
+          <p><span class="am-icon-bookmark"></span> 公告</p>
+          <p>全省安监局长工作会议暨党风廉政建设会议在杭州召开</p>
+		  <p>全面找短板 全力补短板 努力推动安全生产工作再上新台阶</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- sidebar end -->
+
+  <!-- content start -->
+  <div class="admin-content">
+
+    <div class="am-cf am-padding">
+      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">化工监测</strong> / <small>Chemical</small></div>
+    </div>
+
+    <div class="am-g">
+      <div class="am-u-sm-12 am-u-md-6">
+        <div class="am-btn-toolbar">
+          <div class="am-btn-group am-btn-group-xs">
+            <button type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增</button>
+            <button type="button" class="am-btn am-btn-default"><span class="am-icon-save"></span> 保存</button>
+            <button type="button" class="am-btn am-btn-default"><span class="am-icon-archive"></span> 审核</button>
+            <button type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除</button>
+          </div>
+        </div>
+      </div>
+      <div class="am-u-sm-12 am-u-md-3">
+        <div class="am-form-group">
+          <select data-am-selected="{btnSize: 'sm'}">
+            <option value="option1">--全省--</option>
+			<option value="option1">杭州</option>
+            <option value="option2">宁波</option>
+            <option value="option3">温州</option>
+            <option value="option3">湖州</option>
+            <option value="option3">舟山</option>
+          </select>
+        </div>
+      </div>
+      <div class="am-u-sm-12 am-u-md-3">
+        <div class="am-input-group am-input-group-sm">
+          <input type="text" class="am-form-field">
+          <span class="am-input-group-btn">
+            <button class="am-btn am-btn-default" type="button">搜索</button>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="am-g">
+      <div class="am-u-sm-12">
+        <form class="am-form">
+          <table class="am-table am-table-striped am-table-hover table-main">
+            <thead>
+              <tr>
+                <th class="table-check"><input type="checkbox" /></th><th class="table-id">ID</th><th class="table-title">企业名称</th><th class="table-type">所属区域</th><th class="table-author am-hide-sm-only">负责人</th><th class="table-date am-hide-sm-only">接入时间</th><th class="table-set">操作</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox" /></td>
+              <td>1</td>
+              <td><a href="ent-info.html">杭州协和液化气体有限公司</a></td>
+              <td>杭州</td>
+              <td class="am-hide-sm-only">沈建林</td>
+              <td class="am-hide-sm-only">2016年9月4日 17:28:47</td>
+              <td>
+                <div class="am-btn-toolbar">
+                  <div class="am-btn-group am-btn-group-xs">
+                    <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                    <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 审核</button>
+                    <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" /></td>
+              <td>2</td>
+              <td><a href="#">杭州中美华东制药有限公司</a></td>
+              <td>杭州</td>
+              <td class="am-hide-sm-only">李邦良</td>
+              <td class="am-hide-sm-only">2015年3月14日 13:28:47</td>
+              <td>
+                <div class="am-btn-toolbar">
+                  <div class="am-btn-group am-btn-group-xs">
+                    <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                    <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 审核</button>
+                    <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" /></td>
+              <td>3</td>
+              <td><a href="#">杭州气体厂</a></td>
+              <td>杭州</td>
+              <td class="am-hide-sm-only">沈建林</td>
+              <td class="am-hide-sm-only">2014年9月4日 7:28:47</td>
+              <td>
+                <div class="am-btn-toolbar">
+                  <div class="am-btn-group am-btn-group-xs">
+                    <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                    <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 审核</button>
+                    <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" /></td>
+              <td>4</td>
+              <td><a href="#">余姚市舜江试剂厂</a></td>
+              <td>宁波</td>
+              <td class="am-hide-sm-only">任永宝</td>
+              <td class="am-hide-sm-only">2014年8月24日 15:28:47</td>
+              <td>
+                <div class="am-btn-toolbar">
+                  <div class="am-btn-group am-btn-group-xs">
+                    <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                    <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 审核</button>
+                    <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" /></td>
+              <td>5</td>
+              <td><a href="#">慈溪市七星桥胶粘剂有限公司</a></td>
+              <td>宁波</td>
+              <td class="am-hide-sm-only">胡国康</td>
+              <td class="am-hide-sm-only">2014年10月18日 7:28:47</td>
+              <td>
+                <div class="am-btn-toolbar">
+                  <div class="am-btn-group am-btn-group-xs">
+                    <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                    <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 审核</button>
+                    <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" /></td>
+              <td>6</td>
+              <td><a href="#">宁波三菱化学有限公司</a></td>
+              <td>宁波</td>
+              <td class="am-hide-sm-only">山口慎吾</td>
+              <td class="am-hide-sm-only">2016年2月4日 13:28:47</td>
+              <td>
+                <div class="am-btn-toolbar">
+                  <div class="am-btn-group am-btn-group-xs">
+                    <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                    <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 审核</button>
+                    <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" /></td>
+              <td>7</td>
+              <td><a href="#">温州市亚太气体有限公司</a></td>
+              <td>温州</td>
+              <td class="am-hide-sm-only">黄迎婷</td>
+              <td class="am-hide-sm-only">2014年9月4日 7:28:47</td>
+              <td>
+                <div class="am-btn-toolbar">
+                  <div class="am-btn-group am-btn-group-xs">
+                    <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                    <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 审核</button>
+                    <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" /></td>
+              <td>8</td>
+              <td><a href="#">温州金来聚氨酯有限公司</a></td>
+              <td>温州</td>
+              <td class="am-hide-sm-only">陈建南</td>
+              <td class="am-hide-sm-only">2016年11月14日 7:28:47</td>
+              <td>
+                <div class="am-btn-toolbar">
+                  <div class="am-btn-group am-btn-group-xs">
+                    <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                    <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 审核</button>
+                    <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" /></td>
+              <td>9</td>
+              <td><a href="#">温州市大邦化学有限公司</a></td>
+              <td>温州</td>
+              <td class="am-hide-sm-only">陈仁宗</td>
+              <td class="am-hide-sm-only">2016年1月10日 12:28:47</td>
+              <td>
+                <div class="am-btn-toolbar">
+                  <div class="am-btn-group am-btn-group-xs">
+                    <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                    <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 审核</button>
+                    <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" /></td>
+              <td>10</td>
+              <td><a href="#">湖州通宝精细化工有限公司</a></td>
+              <td>湖州</td>
+              <td class="am-hide-sm-only">吴新安</td>
+              <td class="am-hide-sm-only">2014年9月4日 7:28:47</td>
+              <td>
+                <div class="am-btn-toolbar">
+                  <div class="am-btn-group am-btn-group-xs">
+                    <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                    <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 审核</button>
+                    <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            
+          </tbody>
+        </table>
+          <div class="am-cf">
+  每页 10 条记录
+  <div class="am-fr">
+    <ul class="am-pagination">
+      <li class="am-disabled"><a href="#">«</a></li>
+      <li class="am-active"><a href="#">1</a></li>
+      <li><a href="#">2</a></li>
+      <li><a href="#">3</a></li>
+      <li><a href="#">4</a></li>
+      <li><a href="#">»</a></li>
+    </ul>
+  </div>
+</div>
+          <hr />
+          
+        </form>
+      </div>
+
+    </div>
+  </div>
+  <!-- content end -->
+</div>
+
+<a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+
+<footer>
+  <hr>
+  <p class="am-padding-left">© 2016 主办单位：浙江省安全生产科学研究院</p>
+</footer>
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="../assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="../assets/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="../assets/js/amazeui.min.js"></script>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>

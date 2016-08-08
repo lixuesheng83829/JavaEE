@@ -1,0 +1,338 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>浙江省安全生产监控中心服务平台</title>
+  <meta name="description" content="这是一个 table 页面">
+  <meta name="keywords" content="table">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <link rel="icon" type="image/png" href="../assets/i/favicon.png">
+  <link rel="apple-touch-icon-precomposed" href="../assets/i/app-icon72x72@2x.png">
+  <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+  <link rel="stylesheet" href="../assets/css/amazeui.min.css"/>
+  <link rel="stylesheet" href="../assets/css/admin.css">
+  <style>
+	.am-divider{
+		margin:0.5rem;
+	}
+	.node circle {
+		cursor: pointer;
+		fill: #fff;
+		stroke: steelblue;
+		stroke-width: 2px;
+	}
+	.node text {
+		font-size: 12px;
+	}
+	.link {
+		fill: none;
+		stroke: #ccc;
+		stroke-width: 1.5px;
+	}
+  </style>
+  <script src="../script/d3.min.js" charset="utf-8"></script>
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+  以获得更好的体验！</p>
+<![endif]-->
+
+<header class="am-topbar admin-header">
+  <div class="am-topbar-brand">
+    <strong>安全生产监控中心服务平台</strong> <small>Safety Monitoring Center Service Platform</small>
+  </div>
+
+  <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+
+  <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+
+    <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
+      <li><a href="javascript:;"><span class="am-icon-envelope-o"></span> 收件箱 <span class="am-badge am-badge-warning">5</span></a></li>
+      <li class="am-dropdown" data-am-dropdown>
+        <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+          <span class="am-icon-users"></span> 管理员 <span class="am-icon-caret-down"></span>
+        </a>
+        <ul class="am-dropdown-content">
+          <li><a href="#"><span class="am-icon-user"></span> 资料</a></li>
+          <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
+          <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
+        </ul>
+      </li>
+      <li class="am-hide-sm-only"><a href="javascript:;" id="admin-fullscreen"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="am-cf admin-main">
+  <!-- sidebar start -->
+  <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
+    <div class="am-offcanvas-bar admin-offcanvas-bar">
+      <ul class="am-list admin-sidebar-list">
+        
+		<li class="admin-parent">
+          <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}">
+			  <span class="am-icon-skyatlas"></span> 安全数据监测 
+			  <span class="am-icon-angle-right am-fr am-margin-right"></span>
+		  </a>
+          <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav">
+            <li><a href="whp-monitor.html" class="am-cf"><span class="am-icon-industry"></span> 化工监测<span class="am-badge am-badge-secondary am-margin-right am-fr">36</span><span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+            <li><a href="#"><span class="am-icon-puzzle-piece"></span> 矿山监测<span class="am-badge am-badge-secondary am-margin-right am-fr">8</span></a></li>
+            <li><a href="#"><span class="am-icon-th"></span> 粉尘监测<span class="am-badge am-badge-secondary am-margin-right am-fr">24</span></a></li>
+            <li><a href="http://efmudc.homewell.com.cn/UDCWeb/login.action" target="_blank"><span class="am-icon-plug"></span> 智慧用电</a></li>
+          </ul>
+        </li>
+        <li>
+			<a class="am-cf" data-am-collapse="{target: '#collapse-nav3'}">
+				<span class="am-icon-table"></span> 数值分析模拟
+				<span class="am-icon-angle-right am-fr am-margin-right"></span>
+			</a>
+			<ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav3">
+            <li><a href="model-analyse.html" class="am-cf"><span class="am-icon-sitemap"></span> 指标模型</a></li>
+            <li><a href="#"><span class="am-icon-ambulance"></span> 事故后果模型</a></li>
+          </ul>
+		</li>
+        
+		<li class="admin-parent">
+			<a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}">
+			  <span class="am-icon-area-chart"></span> 风险分析应用 
+			  <span class="am-icon-angle-right am-fr am-margin-right"></span>
+			</a>
+			
+			<ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav2">
+				<li><a href="overview-analyse.html" class="am-cf">
+					<span class="am-icon-dashboard"></span> 安全监控大数据</a>
+				</li>
+				<li><a href="#">
+					<span class="am-icon-fire"></span> 重大危险源</a>
+				</li>
+				<li><a href="industry-analyse.html">
+					<span class="am-icon-bar-chart"></span> 行业分析</a>
+				</li>
+				
+			</ul>
+		</li>
+		<li><a href="#"><span class="am-icon-hotel"></span> 事故统计分析</a></li>
+        <li><a href="#"><span class="am-icon-sign-out"></span> 注销</a></li>
+      </ul>
+
+      <div class="am-panel am-panel-default admin-sidebar-panel">
+        <div class="am-panel-bd">
+          <p><span class="am-icon-bookmark"></span> 公告</p>
+          <p>全省安监局长工作会议暨党风廉政建设会议在杭州召开</p>
+		  <p>全面找短板 全力补短板 努力推动安全生产工作再上新台阶</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- sidebar end -->
+
+  <!-- content start -->
+  <div class="admin-content">
+    
+	<div class="am-cf am-padding">
+		<div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">指标模型</strong> / <small>Model</small></div>
+	</div>
+	
+	<hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
+	
+	<div class="am-g">
+		<div class="am-container am-scrollable-horizontal">
+		<div id="jsmind" >
+			
+		</div>
+		<script>
+				var width = 700;
+				var height = 1000;
+
+				//边界空白
+				var padding = {left: 200, right:50, top: 20, bottom: 20 };
+
+				var svg = d3.select("#jsmind")
+						   .append("svg")
+							 .attr("width", width + padding.left + padding.right)
+							 .attr("height", height + padding.top + padding.bottom)
+						   .append("g")
+						   .attr("transform","translate("+ padding.left + "," + padding.top + ")");
+
+				//树状图布局
+				var tree = d3.layout.tree()
+							.size([height, width]);
+
+				//对角线生成器
+				var diagonal = d3.svg.diagonal()
+					.projection(function(d) { return [d.y, d.x]; });
+
+
+				d3.json("learn.json",function(error,root){
+
+				  //给第一个节点添加初始坐标x0和x1
+				  root.x0 = height / 2;
+				  root.y0 = 0;
+
+				  //以第一个节点为起始节点，重绘
+				  redraw(root);
+
+				  //重绘函数
+				  function redraw(source){
+
+					/*
+					（1） 计算节点和连线的位置
+					*/
+
+					//应用布局，计算节点和连线
+					var nodes = tree.nodes(root);
+					var links = tree.links(nodes);
+
+					//重新计算节点的y坐标
+					nodes.forEach(function(d) { d.y = d.depth * 180; });
+
+					/*
+					（2） 节点的处理
+					*/
+
+					//获取节点的update部分
+					var nodeUpdate = svg.selectAll(".node")
+										.data(nodes, function(d){ return d.name; });
+
+					//获取节点的enter部分
+					var nodeEnter = nodeUpdate.enter();
+
+					//获取节点的exit部分
+					var nodeExit = nodeUpdate.exit();
+
+					//1. 节点的 Enter 部分的处理办法
+					var enterNodes = nodeEnter.append("g")
+									.attr("class","node")
+									.attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
+									.on("click", function(d) { toggle(d); redraw(d); });
+
+					enterNodes.append("circle")
+					  .attr("r", 0)
+					  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+					enterNodes.append("text")
+						.attr("x", function(d) { return d.children || d._children ? -14 : 14; })
+						.attr("dy", ".35em")
+						.attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
+						.text(function(d) { return d.name; })
+						.style("fill-opacity", 0);
+
+
+					//2. 节点的 Update 部分的处理办法
+					var updateNodes = nodeUpdate.transition()
+										.duration(500)
+										.attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
+
+					updateNodes.select("circle")
+					  .attr("r", 8)
+					  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+					updateNodes.select("text")
+					  .style("fill-opacity", 1);
+
+					//3. 节点的 Exit 部分的处理办法
+					var exitNodes = nodeExit.transition()
+									  .duration(500)
+									  .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
+									  .remove();
+
+					exitNodes.select("circle")
+					  .attr("r", 0);
+
+					exitNodes.select("text")
+					  .style("fill-opacity", 0);
+
+					/*
+					（3） 连线的处理
+					*/
+
+					//获取连线的update部分
+					var linkUpdate = svg.selectAll(".link")
+										.data(links, function(d){ return d.target.name; });
+
+					//获取连线的enter部分
+					var linkEnter = linkUpdate.enter();
+
+					//获取连线的exit部分
+					var linkExit = linkUpdate.exit();
+
+					//1. 连线的 Enter 部分的处理办法
+					linkEnter.insert("path",".node")
+						  .attr("class", "link")
+						  .attr("d", function(d) {
+							  var o = {x: source.x0, y: source.y0};
+							  return diagonal({source: o, target: o});
+						  })
+						  .transition()
+						  .duration(500)
+						  .attr("d", diagonal);
+
+					//2. 连线的 Update 部分的处理办法
+					linkUpdate.transition()
+						.duration(500)
+						.attr("d", diagonal);
+
+					//3. 连线的 Exit 部分的处理办法
+					linkExit.transition()
+						  .duration(500)
+						  .attr("d", function(d) {
+							var o = {x: source.x, y: source.y};
+							return diagonal({source: o, target: o});
+						  })
+						  .remove();
+
+
+					/*
+					（4） 将当前的节点坐标保存在变量x0、y0里，以备更新时使用
+					*/
+					nodes.forEach(function(d) {
+					  d.x0 = d.x;
+					  d.y0 = d.y;
+					});
+
+				  }
+
+				  //切换开关，d 为被点击的节点
+				  function toggle(d){
+					if(d.children){ //如果有子节点
+					  d._children = d.children; //将该子节点保存到 _children
+					  d.children = null;  //将子节点设置为null
+					}else{  //如果没有子节点
+					  d.children = d._children; //从 _children 取回原来的子节点 
+					  d._children = null; //将 _children 设置为 null
+					}
+				  }
+
+				});
+			</script>
+    </div>
+	</div>
+   
+  </div>
+  <!-- content end -->
+</div>
+
+<a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+
+<footer>
+  <hr>
+  <p class="am-padding-left">© 2016 主办单位：浙江省安全生产科学研究院</p>
+</footer>
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="../assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="../assets/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="../assets/js/amazeui.min.js"></script>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>

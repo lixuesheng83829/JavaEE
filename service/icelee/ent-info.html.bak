@@ -1,0 +1,455 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>企业信息</title>
+  <meta name="description" content="企业,安全生产,基础信息">
+  <meta name="keywords" content="企业,安全生产,基础信息">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <link rel="icon" type="image/png" href="../assets/i/favicon.png">
+  <link rel="apple-touch-icon-precomposed" href="../assets/i/app-icon72x72@2x.png">
+  <meta name="apple-mobile-web-app-title" content="监控中心平台" />
+  <link rel="stylesheet" href="../assets/css/amazeui.min.css"/>
+  <link rel="stylesheet" href="../assets/css/admin.css">
+  <style>
+  .am-table-bd {border: 1px solid #ddd;}
+  .am-table>tbody>tr>td{
+	border-top:1px solid #ddd;
+	border-right:1px solid #ddd;
+   } 
+  </style>
+  <!--1.加载JS-->
+  <script src="../script/FusionCharts.js"></script>
+  
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，本系统平台暂不支持。 请升级浏览器以获得更好的体验！</p>
+<![endif]-->
+
+<header class="am-topbar admin-header">
+  <div class="am-topbar-brand">
+    <strong>安全生产监控中心服务平台</strong> <small>Safety Monitoring Center Service Platform</small>
+  </div>
+
+  <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+
+  <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+
+    <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
+      <li><a href="javascript:;"><span class="am-icon-envelope-o"></span> 收件箱 <span class="am-badge am-badge-warning">5</span></a></li>
+      <li class="am-dropdown" data-am-dropdown>
+        <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+          <span class="am-icon-users"></span> 管理员 <span class="am-icon-caret-down"></span>
+        </a>
+        <ul class="am-dropdown-content">
+          <li><a href="#"><span class="am-icon-user"></span> 资料</a></li>
+          <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
+          <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
+        </ul>
+      </li>
+      <li class="am-hide-sm-only"><a href="javascript:;" id="admin-fullscreen"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="am-cf admin-main">
+  <!-- sidebar start -->
+  <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
+    <div class="am-offcanvas-bar admin-offcanvas-bar">
+      <ul class="am-list admin-sidebar-list">
+        
+		<li class="admin-parent">
+          <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}">
+			  <span class="am-icon-skyatlas"></span> 安全数据监测 
+			  <span class="am-icon-angle-right am-fr am-margin-right"></span>
+		  </a>
+          <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav">
+            <li><a href="whp-monitor.html" class="am-cf"><span class="am-icon-industry"></span> 化工监测<span class="am-badge am-badge-secondary am-margin-right am-fr">36</span><span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+            <li><a href="#"><span class="am-icon-puzzle-piece"></span> 矿山监测<span class="am-badge am-badge-secondary am-margin-right am-fr">8</span></a></li>
+            <li><a href="#"><span class="am-icon-th"></span> 粉尘监测<span class="am-badge am-badge-secondary am-margin-right am-fr">24</span></a></li>
+            <li><a href="http://efmudc.homewell.com.cn/UDCWeb/login.action" target="_blank"><span class="am-icon-plug"></span> 智慧用电</a></li>
+          </ul>
+        </li>
+        <li>
+			<a class="am-cf" data-am-collapse="{target: '#collapse-nav3'}">
+				<span class="am-icon-table"></span> 数值分析模拟
+				<span class="am-icon-angle-right am-fr am-margin-right"></span>
+			</a>
+			<ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav3">
+            <li><a href="model-analyse.html" class="am-cf"><span class="am-icon-sitemap"></span> 指标模型</a></li>
+            <li><a href="#"><span class="am-icon-ambulance"></span> 事故后果模型</a></li>
+          </ul>
+		</li>
+        
+		<li class="admin-parent">
+			<a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}">
+			  <span class="am-icon-area-chart"></span> 风险分析应用 
+			  <span class="am-icon-angle-right am-fr am-margin-right"></span>
+			</a>
+			
+			<ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav2">
+				<li><a href="overview-analyse.html" class="am-cf">
+					<span class="am-icon-dashboard"></span> 安全监控大数据</a>
+				</li>
+				<li><a href="#">
+					<span class="am-icon-fire"></span> 重大危险源</a>
+				</li>
+				<li><a href="industry-analyse.html">
+					<span class="am-icon-bar-chart"></span> 行业分析</a>
+				</li>
+				
+			</ul>
+		</li>
+		<li><a href="#"><span class="am-icon-hotel"></span> 事故统计分析</a></li>
+        <li><a href="#"><span class="am-icon-sign-out"></span> 注销</a></li>
+      </ul>
+
+      <div class="am-panel am-panel-default admin-sidebar-panel">
+        <div class="am-panel-bd">
+          <p><span class="am-icon-bookmark"></span> 公告</p>
+          <p>全省安监局长工作会议暨党风廉政建设会议在杭州召开</p>
+		  <p>全面找短板 全力补短板 努力推动安全生产工作再上新台阶</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- sidebar end -->
+<!-- content start -->
+
+	<!-- fusionChart start -->
+	<div class="am-modal am-modal-no-btn" tabindex="-1" id="my-alert" style="width:auto">
+		<div class="am-modal-dialog">
+			<div class="am-modal-hd">甲醇储罐1(液位)监测数据
+				<a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+			</div>
+			<!--2.添加div容器-->
+			<div class="am-modal-bd" id="chartdiv" align="center" style="width:800">
+				Modal 内容。
+			</div>
+			<!--3.使用js完成加载数据-->
+			<script type="text/javascript">   
+				var myChart = new FusionCharts("../fusionCharts/FCF_Line.swf", "myChartId", "800", "500");  
+				myChart.setDataURL("data.xml");   
+				myChart.render("chartdiv");    
+			</script>  
+		</div>
+	</div>
+	<!-- fusionChart end -->
+
+<div class="admin-content">
+
+  <div class="am-cf am-padding">
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">企业信息</strong> / <small>Information</small></div>
+  </div>
+
+  <div class="am-tabs am-margin" data-am-tabs>
+    <ul class="am-tabs-nav am-nav am-nav-tabs">
+      <li class="am-active"><a href="#tab1">基本信息</a></li>
+      <li><a href="#tab2">监控信息</a></li>
+      <li><a href="#tab3">报警记录</a></li>
+    </ul>
+
+	<!--标签体_begin-->
+    <div class="am-tabs-bd">
+	  <!--标签2_begin-->
+      <div class="am-tab-panel am-fade" id="tab2">
+        <div class="am-g am-margin-top">
+			<table class="am-table am-table-striped am-table-hover table-main">
+				<thead>
+					<tr>
+						<th class="table-check"><input type="checkbox" /></th>
+						<th class="table-id">ID</th>
+						<th class="table-title">设施名称</th>
+						<th class="table-title">参数名称</th>
+						<th class="table-type">单位</th>
+						<th class="table-author ">当前值</th>
+						<th class="table-date am-hide-sm-only">下下限</th>
+						<th class="table-date am-hide-sm-only">下限</th>
+						<th class="table-date am-hide-sm-only">上限</th>
+						<th class="table-date am-hide-sm-only">上上限</th>
+					</tr>	
+				</thead>
+				<tbody>
+					<tr>
+						<td><input type="checkbox" /></td>
+						<td>1</td>
+						<td><a data-am-modal="{target: '#my-alert'}" href="#">甲醇储罐1</a></td>
+						<td>甲醇1号罐液位</td>
+						<td>m</td>
+						<td class="am-text-success">2.34</td>
+						<td class="am-hide-sm-only">0.1</td>
+						<td class="am-hide-sm-only">0.3</td>
+						<td class="am-hide-sm-only">8</td>
+						<td class="am-hide-sm-only">10</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" /></td>
+						<td>2</td>
+						<td><a href="ent-info.html">甲醇储罐2</a></td>
+						<td>甲醇2号罐液位</td>
+						<td>m</td>
+						<td class="am-text-success">6.54</td>
+						<td class="am-hide-sm-only">0.1</td>
+						<td class="am-hide-sm-only">0.3</td>
+						<td class="am-hide-sm-only">8</td>
+						<td class="am-hide-sm-only">10</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" /></td>
+						<td>3</td>
+						<td><a href="ent-info.html">甲醛中间槽1# </a></td>
+						<td>甲醛1#中间槽液位</td>
+						<td>m</td>
+						<td class="am-text-success">5.43</td>
+						<td class="am-hide-sm-only">0.1</td>
+						<td class="am-hide-sm-only">0.3</td>
+						<td class="am-hide-sm-only">7.5</td>
+						<td class="am-hide-sm-only">7.8</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" /></td>
+						<td>4</td>
+						<td><a href="ent-info.html">氧化器</a></td>
+						<td>氧化器温度</td>
+						<td>℃</td>
+						<td class="am-text-danger">86.8</td>
+						<td class="am-hide-sm-only">10</td>
+						<td class="am-hide-sm-only">20</td>
+						<td class="am-hide-sm-only">80</td>
+						<td class="am-hide-sm-only">90</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" /></td>
+						<td>5</td>
+						<td><a href="ent-info.html">甲醛储罐1</a></td>
+						<td>甲醛1号罐液位</td>
+						<td>m</td>
+						<td class="am-text-success">8.48</td>
+						<td class="am-hide-sm-only">1</td>
+						<td class="am-hide-sm-only">5</td>
+						<td class="am-hide-sm-only">15</td>
+						<td class="am-hide-sm-only">18</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" /></td>
+						<td>6</td>
+						<td><a href="ent-info.html">吸收塔1</a></td>
+						<td>吸收塔1温度</td>
+						<td>℃</td>
+						<td class="am-text-warning">14</td>
+						<td class="am-hide-sm-only">0.1</td>
+						<td class="am-hide-sm-only">0.3</td>
+						<td class="am-hide-sm-only">8</td>
+						<td class="am-hide-sm-only">10</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="am-margin">
+				<button type="button" class="am-btn am-btn-primary am-btn-xs">新增</button>
+				<button type="button" class="am-btn am-btn-primary am-btn-xs">删除</button>
+			</div>
+        </div>
+	  </div>
+	  <!--标签2_end-->
+	  <!--标签1_begin-->
+      <div class="am-tab-panel am-fade am-in am-active" id="tab1">
+			<div class="am-margin">
+				<button type="button" class="am-btn am-btn-primary am-btn-xs">编辑修改</button>
+			</div>
+
+        <table class="am-table am-table-bd am-table-hover table-main">
+			<tr>
+                <td class="am-active am-text-right" style="width:130px">企业名称:</td>
+				<td style="width:210px">杭州协和液化气体有限公司</td>
+				<td class="am-active am-text-right" style="width:125px">注册号:</td>
+				<td >098983287427</td>
+				<td class="am-active am-text-right" style="width:135px">经济类型:</td>
+				<td style="width:270px">民营</td>
+            </tr>
+			<tr>
+                <td class="am-active am-text-right">组织机构代码:</td>
+				<td></td>
+				<td class="am-active am-text-right">行政区划:</td>
+				<td>半山镇</td>
+				<td class="am-active am-text-right">行业类别:</td>
+				<td></td>
+            </tr>
+			<tr>
+                <td class="am-active am-text-right">成立日期:</td>
+				<td>2008-11-28</td>
+				<td class="am-active am-text-right">法定代表人:</td>
+				<td>沈建林</td>
+				<td class="am-active am-text-right">*所属行业:</td>
+				<td>危险化学品</td>
+            </tr>
+			<tr>
+                <td class="am-active am-text-right">*联系电话:</td>
+				<td>13857143239</td>
+				<td class="am-active am-text-right">电子邮箱:</td>
+				<td>hzqtc@yahoo.com.cn</td>
+				<td class="am-active am-text-right">*所属领域:</td>
+				<td>危化生产(石油加工、炼焦和核燃料制造)</td>
+            </tr>
+			<tr>
+                <td class="am-active am-text-right">单位传真:</td>
+				<td></td>
+				<td class="am-active am-text-right">主要负责人:</td>
+				<td>沈建林</td>
+				<td class="am-active am-text-right">企业行政隶属关系:</td>
+				<td></td>
+            </tr>
+			<tr>
+                <td class="am-active am-text-right">主要负责人电话:</td>
+				<td></td>
+				<td class="am-active am-text-right">主要负责人手机:</td>
+				<td></td>
+				<td class="am-active am-text-right">企业经营状态:</td>
+				<td></td>
+            </tr>
+			<tr>
+                <td class="am-active am-text-right">负责人Email:</td>
+				<td></td>
+				<td class="am-active am-text-right">邮政编码:</td>
+				<td>310022</td>
+				<td class="am-active am-text-right">营业执照类别:</td>
+				<td></td>
+            </tr>
+			<tr>
+                <td class="am-active am-text-right" >注册地址:</td>
+				<td colspan="2">杭州市拱墅区半山镇杭钢制氧站南侧</td>
+                <td class="am-active am-text-right" >生产/经营地址:</td>
+				<td colspan="2">杭州市拱墅区半山镇杭钢制氧站南侧</td>
+            </tr>
+			<tr>
+                <td class="am-active am-text-right" >企业位置:</td>
+				<td colspan="2">未定位</td>
+                <td class="am-active am-text-right" >占地面积(平方):</td>
+				<td colspan="2"></td>
+            </tr>
+			<tr>
+                <td class="am-active am-text-right" >经营范围:</td>
+				<td colspan="5"></td>
+            </tr>
+			<tr>
+                <td class="am-active am-text-right" >危险工艺:</td>
+				<td colspan="5"></td>
+            </tr>
+			<tr>
+                <td class="am-active am-text-right" >重点监管危化品:</td>
+				<td colspan="5"></td>
+            </tr>
+			<tr>
+                <td class="am-active am-text-right" >剧毒品:</td>
+				<td colspan="5"></td>
+            </tr>
+			<tr>
+                <td class="am-active am-text-right" >易制毒品:</td>
+				<td colspan="5"></td>
+            </tr>
+			<tr>
+                <td class="am-active am-text-right">注册资金/万元:</td>
+				<td>800</td>
+				<td class="am-active am-text-right">年销售收入/万元:</td>
+				<td>1597</td>
+				<td class="am-active am-text-right">企业规模:</td>
+				<td></td>
+            </tr>
+			<tr>
+                <td class="am-active am-text-right">年利润/万元:</td>
+				<td></td>
+				<td class="am-active am-text-right">资产总额/万元:</td>
+				<td>1444</td>
+				<td class="am-active am-text-right">规模情况:</td>
+				<td>规模以上</td>
+            </tr>
+			<tr>
+                <td class="am-active am-text-right">标准化等级:</td>
+				<td>省二级</td>
+				<td class="am-active am-text-right">诚信等级:</td>
+				<td>B</td>
+				<td class="am-active am-text-right">是否黑名单:</td>
+				<td>否</td>
+            </tr>
+			<tr>
+                <td class="am-active am-text-right">是否示范企业:</td>
+				<td>否</td>
+				<td class="am-active am-text-right">监管分类:</td>
+				<td></td>
+				<td class="am-active am-text-right">重大危险源级别:</td>
+				<td></td>
+            </tr>
+		</table>
+      </div>
+	  <!--标签1_end-->
+
+	  <!--标签3_begin-->
+	  <div class="am-tab-panel am-fade" id="tab3">
+        <form class="am-form">
+          <div class="am-g error-log">
+			<div class="am-u-sm-12 am-u-sm-centered">
+				<pre class="am-pre-scrollable">
+<span class="am-text-success">[1月11日 17:32:52 2016]</span> <span class="am-text-warning">[warning]</span> [吸收塔] 液位超过上限: 8.5m/[上限:8m]
+<span class="am-text-success">[1月11日 17:32:52 2016]</span> <span class="am-text-warning">[warning]</span> [吸收塔] 液位超过上限: 8.2m/[上限:8m]
+<span class="am-text-success">[1月11日 17:32:52 2016]</span> <span class="am-text-warning">[warning]</span> [甲醇储罐1] 液位超过上限: 8.3m/[上限:8m]
+<span class="am-text-success">[1月11日 17:32:52 2016]</span> <span class="am-text-warning">[warning]</span> [甲醇储罐1] 液位超过上限: 8.2m/[上限:8m]
+<span class="am-text-success">[1月11日 17:32:52 2016]</span> <span class="am-text-warning">[warning]</span> [氧化器] 温度超过上限: 86.8℃/[上限:80℃]
+<span class="am-text-success">[1月11日 17:32:52 2016]</span> <span class="am-text-warning">[warning]</span> [氧化器] 温度超过上限: 83.4℃/[上限:80℃]
+<span class="am-text-success">[1月11日 17:32:52 2016]</span> <span class="am-text-warning">[warning]</span> [氧化器] 温度超过上限: 81.8℃/[上限:80℃]
+<span class="am-text-success">[1月11日 17:32:52 2016]</span> <span class="am-text-warning">[warning]</span> [吸收塔] 液位超过上限: 8.3m/[上限:8m]
+<span class="am-text-success">[1月11日 17:32:52 2016]</span> <span class="am-text-danger">[error]</span> [甲醛储罐1] 液位超过上上限: 10.2m/[上上限:10m]
+<span class="am-text-success">[1月11日 17:32:52 2016]</span> <span class="am-text-warning">[warning]</span> [甲醛储罐1] 液位超过上限: 9.2m/[上限:8m]
+<span class="am-text-success">[1月11日 17:32:52 2016]</span> <span class="am-text-danger">[error]</span> [甲醛储罐1] 液位超过上上限: 10.1m/[上上限:10m]
+<span class="am-text-success">[1月11日 17:32:52 2016]</span> <span class="am-text-warning">[warning]</span> [甲醛储罐1] 液位超过上限: 9.2m/[上限:8m]
+<span class="am-text-success">[1月11日 17:32:52 2016]</span> <span class="am-text-danger">[error]</span> [甲醛储罐1] 液位超过上上限: 10.1m/[上上限:10m]
+<span class="am-text-success">[1月11日 17:32:52 2016]</span> <span class="am-text-warning">[warning]</span> [甲醛储罐1] 液位超过上限: 9.2m/[上限:8m]
+<span class="am-text-success">[1月11日 17:32:52 2016]</span> <span class="am-text-danger">[error]</span> [甲醛储罐1] 液位超过上上限: 10.1m/[上上限:10m]
+<span class="am-text-success">[1月11日 17:32:52 2016]</span> <span class="am-text-danger">[error]</span> [甲醛储罐1] 液位超过上上限: 10.1m/[上上限:10m]
+<span class="am-text-success">[1月11日 17:32:52 2016]</span> <span class="am-text-warning">[warning]</span> [甲醛储罐1] 液位超过上限: 9.2m/[上限:8m]
+<span class="am-text-success">[1月11日 17:32:52 2016]</span> <span class="am-text-warning">[warning]</span> [氧化器] 温度超过上限: 86.8℃/[上限:80℃]
+<span class="am-text-success">[1月11日 17:32:52 2016]</span> <span class="am-text-warning">[warning]</span> [甲醛储罐1] 液位超过上限: 9.2m/[上限:8m]
+<span class="am-text-success">[1月11日 17:32:52 2016]</span> <span class="am-text-warning">[warning]</span> [甲醛储罐1] 液位超过上限: 9.2m/[上限:8m]
+<span class="am-text-success">[1月11日 17:32:52 2016]</span> <span class="am-text-warning">[warning]</span> [吸收塔] 液位超过上限: 8.2m/[上限:8m]
+<span class="am-text-success">[1月11日 17:32:52 2016]</span> <span class="am-text-warning">[warning]</span> [甲醛储罐1] 液位超过上限: 9.2m/[上限:8m]
+<span class="am-text-success">[1月11日 17:32:52 2016]</span> <span class="am-text-warning">[warning]</span> [氧化器] 温度超过上限: 86.8℃/[上限:80℃]
+<span class="am-text-success">[1月11日 17:32:52 2016]</span> <span class="am-text-warning">[warning]</span> [吸收塔] 液位超过上限: 8.2m/[上限:8m]
+				</pre>
+			</div>
+		  </div>
+        </form>
+      </div>
+	  <!--标签3_end-->
+
+    </div>
+	<!--标签体_end-->
+  </div>
+
+  
+</div>
+<!-- content end -->
+
+</div>
+
+<a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+
+<footer>
+  <hr>
+  <p class="am-padding-left">© 2016 主办单位：浙江省安全生产科学研究院</p>
+</footer>
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="../assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="../assets/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="../assets/js/amazeui.min.js"></script>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>
